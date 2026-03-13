@@ -1,0 +1,196 @@
+2026-03-05 23:27:49,165  INFO      === DRY RUN MODE — no data will be written to the database ===
+2026-03-05 23:27:49,165  INFO      === Iran Conflict DB Updater  2026-03-05 23:27 ===
+2026-03-05 23:27:49,165  ERROR     Failed to fetch articles: NEWSAPI_KEY not set. Add it to your .env file.
+Get a free key at: https://newsapi.org
+2026-03-05 23:29:23,016  INFO      === DRY RUN MODE — no data will be written to the database ===
+2026-03-05 23:29:23,016  INFO      === Iran Conflict DB Updater  2026-03-05 23:29 ===
+2026-03-05 23:29:23,017  INFO      Fetching news articles (last 3 day(s))…
+2026-03-05 23:29:23,186  INFO        → 19 article(s) retrieved
+2026-03-05 23:29:23,305  INFO      Sending articles to Gemini Flash for extraction…
+2026-03-05 23:29:23,308  INFO      AFC is enabled with max remote calls: 10.
+2026-03-05 23:29:23,465  INFO      HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-03-05 23:29:23,466  ERROR     Gemini extraction failed: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-1.5-flash is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}
+2026-03-05 23:35:15,743  INFO      === DRY RUN MODE — no data will be written to the database ===
+2026-03-05 23:35:15,744  INFO      === Iran Conflict DB Updater  2026-03-05 23:35 ===
+2026-03-05 23:35:15,744  INFO      Fetching news articles (last 3 day(s))…
+2026-03-05 23:35:15,913  INFO        → 19 article(s) retrieved
+2026-03-05 23:35:15,987  INFO      Sending articles to Gemini Flash for extraction…
+2026-03-05 23:35:15,987  INFO      AFC is enabled with max remote calls: 10.
+2026-03-05 23:35:16,155  INFO      HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-05 23:35:16,156  ERROR     Gemini extraction failed: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 0, model: gemini-2.0-flash\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 0, model: gemini-2.0-flash\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_input_token_count, limit: 0, model: gemini-2.0-flash\nPlease retry in 43.526229564s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel-FreeTier', 'quotaDimensions': {'model': 'gemini-2.0-flash', 'location': 'global'}}, {'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerMinutePerProjectPerModel-FreeTier', 'quotaDimensions': {'model': 'gemini-2.0-flash', 'location': 'global'}}, {'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_input_token_count', 'quotaId': 'GenerateContentInputTokensPerModelPerMinute-FreeTier', 'quotaDimensions': {'model': 'gemini-2.0-flash', 'location': 'global'}}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '43s'}]}}
+2026-03-05 23:42:25,096  INFO      === DRY RUN MODE — no data will be written to the database ===
+2026-03-05 23:42:25,097  INFO      === Iran Conflict DB Updater  2026-03-05 23:42 ===
+2026-03-05 23:42:25,097  INFO      Fetching news articles (last 1 day(s))…
+2026-03-05 23:42:25,245  INFO        → 0 article(s) retrieved
+2026-03-05 23:42:25,246  INFO      No articles returned for the time period. Nothing to do.
+2026-03-05 23:44:45,498  INFO      === DRY RUN MODE — no data will be written to the database ===
+2026-03-05 23:44:45,499  INFO      === Iran Conflict DB Updater  2026-03-05 23:44 ===
+2026-03-05 23:44:45,499  INFO      Fetching news articles (last 2 day(s))…
+2026-03-05 23:44:45,642  INFO        → 19 article(s) retrieved
+2026-03-05 23:44:45,703  INFO      Sending articles to Gemini Flash for extraction…
+2026-03-05 23:44:45,704  INFO      AFC is enabled with max remote calls: 10.
+2026-03-05 23:45:19,332  INFO      HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent "HTTP/1.1 200 OK"
+2026-03-05 23:45:19,338  ERROR     Gemini returned invalid JSON: Unterminated string starting at: line 13 column 7 (char 471)
+Raw output:
+{
+  "incidents": [
+    {
+      "incident_key": "ISFAHAN_QOM_STRIKES_20260305",
+      "incident_date": "2026-03-05",
+      "location_city": "Qom, Isfahan",
+      "location_region": null,
+      "location_country": "Iran",
+      "incident_type": "Airstrike",
+      "attacking_party": "Israel",
+      "target_type": "Military",
+      "description": "Israeli Air Force aircraft struck a ballistic missile launcher in Qom and an aerial defense system in Isfahan, Iran.",
+      "reported
+2026-03-05 23:45:19,339  INFO      No incidents to process.
+2026-03-05 23:47:50,490  INFO      === Iran Conflict DB Updater  2026-03-05 23:47 ===
+2026-03-05 23:47:50,490  INFO      Fetching news articles (last 1 day(s))…
+2026-03-05 23:47:50,615  INFO        → 0 article(s) retrieved
+2026-03-05 23:47:50,616  INFO      No articles returned for the time period. Nothing to do.
+2026-03-05 23:48:01,534  INFO      === DRY RUN MODE — no data will be written to the database ===
+2026-03-05 23:48:01,534  INFO      === Iran Conflict DB Updater  2026-03-05 23:48 ===
+2026-03-05 23:48:01,535  INFO      Fetching news articles (last 2 day(s))…
+2026-03-05 23:48:01,722  INFO        → 19 article(s) retrieved
+2026-03-05 23:48:01,783  INFO      Sending articles to Gemini Flash for extraction…
+2026-03-05 23:48:01,784  INFO      AFC is enabled with max remote calls: 10.
+2026-03-05 23:48:57,747  INFO      HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent "HTTP/1.1 200 OK"
+2026-03-05 23:48:57,749  INFO        → Gemini extracted 7 candidate incident(s)
+2026-03-05 23:48:57,754  INFO      DRY-RUN  [QOM_STRIKE_20260305]  2026-03-05  conf=1.00  Qom, Iran  — Israeli Air Force struck a ballistic missile launcher in Qom, Iran.
+2026-03-05 23:48:57,754  INFO      DRY-RUN  [ISFAHAN_STRIKE_20260305]  2026-03-05  conf=1.00  Isfahan, Iran  — Israeli Air Force struck an aerial defense system in Isfahan, Iran.
+2026-03-05 23:48:57,754  INFO      DRY-RUN  [INDIAN_OCEAN_NAVAL_ATTACK_20260305]  2026-03-05  conf=1.00  None, International Waters  — US submarine attacked an Iranian vessel in the Indian Ocean.
+2026-03-05 23:48:57,754  INFO                 casualty: 87x Killed (Military) — Unknown
+2026-03-05 23:48:57,755  INFO                 casualty: 24x Missing (Military) — Unknown
+2026-03-05 23:48:57,755  INFO      DRY-RUN  [ISRAEL_MISSILE_STRIKE_20260305]  2026-03-05  conf=1.00  Jerusalem, Israel  — Iran launched several missiles at Israel, triggering alerts and explosions in Je
+2026-03-05 23:48:57,755  INFO      DRY-RUN  [TEHRAN_STRIKE_20260305]  2026-03-05  conf=0.80  Tehran, Iran  — Israeli military launched fresh strikes across Tehran.
+2026-03-05 23:48:57,755  INFO      DRY-RUN  [LEBANON_STRIKE_20260305]  2026-03-05  conf=0.80  None, Lebanon  — Israel pounded Lebanon with airstrikes.
+2026-03-05 23:48:57,755  INFO      DRY-RUN  [DOHA_MISSILE_STRIKE_20260305]  2026-03-05  conf=1.00  Doha, Qatar  — Iranian missile hit a US military base in Doha, Qatar.
+2026-03-05 23:48:57,756  INFO      ────────────────────────────────────────────────────────────
+2026-03-05 23:48:57,756  INFO      Done.  Inserted: 7  |  Skipped/warned: 0  |  Casualty rows added: 0
+2026-03-05 23:50:49,071  INFO      === Iran Conflict DB Updater  2026-03-05 23:50 ===
+2026-03-05 23:50:49,071  INFO      Fetching news articles (last 2 day(s))…
+2026-03-05 23:50:49,236  INFO        → 19 article(s) retrieved
+2026-03-05 23:50:49,298  INFO      Sending articles to Gemini Flash for extraction…
+2026-03-05 23:50:49,298  INFO      AFC is enabled with max remote calls: 10.
+2026-03-05 23:51:50,502  INFO      HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent "HTTP/1.1 200 OK"
+2026-03-05 23:51:50,504  INFO        → Gemini extracted 9 candidate incident(s)
+2026-03-05 23:56:13,331  INFO      === Iran Conflict DB Updater  2026-03-05 23:56 ===
+2026-03-05 23:56:13,331  INFO      Fetching news articles (last 2 day(s))…
+2026-03-05 23:56:13,635  INFO        → 19 article(s) retrieved
+2026-03-05 23:56:13,699  INFO      Sending articles to Gemini Flash for extraction…
+2026-03-05 23:56:13,699  INFO      AFC is enabled with max remote calls: 10.
+2026-03-05 23:57:05,465  INFO      HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent "HTTP/1.1 200 OK"
+2026-03-05 23:57:05,467  INFO        → Gemini extracted 7 candidate incident(s)
+2026-03-06 00:00:01,615  INFO      === Iran Conflict DB Updater  2026-03-06 00:00 ===
+2026-03-06 00:00:01,616  INFO      Fetching news articles (last 2 day(s))…
+2026-03-06 00:00:01,842  INFO        → 19 article(s) retrieved
+2026-03-06 00:00:01,903  INFO      Sending articles to Gemini Flash for extraction…
+2026-03-06 00:00:01,903  INFO      AFC is enabled with max remote calls: 10.
+2026-03-06 00:01:00,641  INFO      HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent "HTTP/1.1 200 OK"
+2026-03-06 00:01:00,642  INFO        → Gemini extracted 7 candidate incident(s)
+2026-03-06 00:01:00,699  INFO        New location inserted: Unknown, Iraq (LocationID=37)
+2026-03-06 00:01:00,704  INFO      INSERT [IRAN_MISSILE_IRAQ_0305]  2026-03-05  conf=0.90  None, Iraq  (0 casualty row(s))
+2026-03-06 00:01:00,708  INFO        New location inserted: Qom, Iran (LocationID=38)
+2026-03-06 00:01:00,712  INFO      INSERT [ISRAEL_STRIKE_QOM_0305]  2026-03-05  conf=0.90  Qom, Iran  (0 casualty row(s))
+2026-03-06 00:01:00,716  INFO        New location inserted: Isfahan, Iran (LocationID=39)
+2026-03-06 00:01:00,719  INFO      INSERT [ISRAEL_STRIKE_ISFAHAN_0305]  2026-03-05  conf=0.90  Isfahan, Iran  (0 casualty row(s))
+2026-03-06 00:01:00,723  INFO        New location inserted: Unknown, Unknown (LocationID=40)
+2026-03-06 00:01:00,735  INFO      INSERT [US_SUBMARINE_INDIAN_OCEAN_0305]  2026-03-05  conf=0.80  None, None  (2 casualty row(s))
+2026-03-06 00:01:00,738  INFO        New location inserted: Jerusalem, Israel (LocationID=41)
+2026-03-06 00:01:00,743  INFO      INSERT [IRAN_MISSILE_ISRAEL_0305]  2026-03-05  conf=0.90  Jerusalem, Israel  (0 casualty row(s))
+2026-03-06 00:01:00,744  INFO        New location inserted: Unknown, Lebanon (LocationID=42)
+2026-03-06 00:01:00,747  INFO      INSERT [ISRAEL_STRIKE_LEBANON_0305]  2026-03-05  conf=0.70  None, Lebanon  (0 casualty row(s))
+2026-03-06 00:01:00,751  INFO        New location inserted: Tehran, Iran (LocationID=43)
+2026-03-06 00:01:00,754  INFO      INSERT [ISRAEL_STRIKE_TEHRAN_0305]  2026-03-05  conf=0.70  Tehran, Iran  (0 casualty row(s))
+2026-03-06 00:01:00,755  INFO      ────────────────────────────────────────────────────────────
+2026-03-06 00:01:00,755  INFO      Done.  Inserted: 7  |  Skipped/warned: 0  |  Casualty rows added: 2
+2026-03-07 23:10:04,787  INFO      === Iran Conflict DB Updater  2026-03-07 23:10 ===
+2026-03-07 23:10:04,787  INFO      Fetching news articles (last 2 day(s))…
+2026-03-07 23:10:05,056  INFO        → 19 article(s) retrieved
+2026-03-07 23:10:05,131  INFO      Sending articles to Gemini Flash for extraction…
+2026-03-07 23:10:05,131  INFO      AFC is enabled with max remote calls: 10.
+2026-03-07 23:10:49,327  INFO      HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent "HTTP/1.1 200 OK"
+2026-03-07 23:10:49,330  INFO        → Gemini extracted 6 candidate incident(s)
+2026-03-07 23:10:49,532  INFO      INSERT [TEHRAN_BUNKER_STRIKE_20260307]  2026-03-07  conf=1.00  Tehran, Iran  (0 casualty row(s))
+2026-03-07 23:10:49,547  INFO        New location inserted: Unknown, Unknown/Multiple (LocationID=44)
+2026-03-07 23:10:49,551  INFO      INSERT [IRAN_REGIONAL_ATTACKS_20260307]  2026-03-07  conf=0.70  None, Unknown/Multiple  (0 casualty row(s))
+2026-03-07 23:10:49,560  INFO      INSERT [INDIAN_OCEAN_US_STRIKE_20260307]  2026-03-07  conf=1.00  None, Unknown  (0 casualty row(s))
+2026-03-07 23:10:49,564  INFO      INSERT [TEHRAN_ISRAELI_STRIKES_20260308]  2026-03-08  conf=1.00  Tehran, Iran  (0 casualty row(s))
+2026-03-07 23:10:49,570  INFO        New location inserted: Unknown, Israel (LocationID=45)
+2026-03-07 23:10:49,573  INFO      INSERT [ISRAEL_IRANIAN_MISSILES_20260308]  2026-03-08  conf=1.00  None, Israel  (0 casualty row(s))
+2026-03-07 23:10:49,581  INFO      INSERT [MEHRABAD_AIRPORT_STRIKE_20260308]  2026-03-08  conf=1.00  Tehran, Iran  (0 casualty row(s))
+2026-03-07 23:10:49,586  INFO      ────────────────────────────────────────────────────────────
+2026-03-07 23:10:49,586  INFO      Done.  Inserted: 6  |  Skipped/warned: 0  |  Casualty rows added: 0
+2026-03-11 19:03:28,353  INFO      === Iran Conflict DB Updater  2026-03-11 19:03 ===
+2026-03-11 19:03:28,354  INFO      Fetching news articles (last 2 day(s))…
+2026-03-11 19:03:28,577  INFO        → 20 article(s) retrieved
+2026-03-11 19:03:28,656  INFO      Sending articles to Gemini Flash for extraction…
+2026-03-11 19:03:28,656  INFO      AFC is enabled with max remote calls: 10.
+2026-03-11 19:04:02,573  INFO      HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent "HTTP/1.1 200 OK"
+2026-03-11 19:04:02,577  INFO        → Gemini extracted 3 candidate incident(s)
+2026-03-11 19:04:02,873  INFO        New location inserted: Beirut, Lebanon (LocationID=46)
+2026-03-11 19:04:02,888  INFO      INSERT [BEIRUT_SUBURBS_STRIKES_20260310]  2026-03-10  conf=0.70  Beirut, Lebanon  (0 casualty row(s))
+2026-03-11 19:04:02,888  WARNING   SKIP  [HORMUZ_MINE_ACTIVITY_20260309]  confidence 0.60 < 0.7  — Intelligence reports indicate Iran deployed mine-laying boats in the Strait of H
+2026-03-11 19:04:02,893  INFO        New location inserted: Unknown, Multiple (LocationID=47)
+2026-03-11 19:04:02,899  INFO      INSERT [REGIONAL_BARRAGES_20260309]  2026-03-09  conf=0.90  None, Multiple  (0 casualty row(s))
+2026-03-11 19:04:02,901  INFO      ────────────────────────────────────────────────────────────
+2026-03-11 19:04:02,901  INFO      Done.  Inserted: 2  |  Skipped/warned: 1  |  Casualty rows added: 0
+2026-03-11 19:13:26,513  INFO      === Iran Conflict DB Updater  2026-03-11 19:13 ===
+2026-03-11 19:13:26,513  INFO      Fetching news articles (last 4 day(s))…
+2026-03-11 19:13:26,734  INFO        → 20 article(s) retrieved
+2026-03-11 19:13:26,793  INFO      Sending articles to Gemini Flash for extraction…
+2026-03-11 19:13:26,793  INFO      AFC is enabled with max remote calls: 10.
+2026-03-11 19:13:51,360  INFO      HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent "HTTP/1.1 200 OK"
+2026-03-11 19:13:51,362  INFO        → Gemini extracted 0 candidate incident(s)
+2026-03-11 19:13:51,363  INFO      No incidents to process.
+2026-03-12 20:28:08,626  INFO      === Iran Conflict DB Updater  2026-03-12 20:28 ===
+2026-03-12 20:28:08,627  INFO      Fetching news articles (last 4 day(s))…
+2026-03-12 20:28:08,917  INFO        → 19 article(s) retrieved
+2026-03-12 20:28:08,997  INFO      Sending articles to Gemini Flash for extraction…
+2026-03-12 20:28:08,998  INFO      AFC is enabled with max remote calls: 10.
+2026-03-12 20:28:55,319  INFO      HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent "HTTP/1.1 200 OK"
+2026-03-12 20:28:55,324  INFO        → Gemini extracted 6 candidate incident(s)
+2026-03-12 20:28:55,591  INFO        New location inserted: Unknown, Saudi Arabia (LocationID=48)
+2026-03-12 20:28:55,608  INFO      INSERT [SHAYBAH_DRONE_INTERCEPT_20260312]  2026-03-12  conf=1.00  None, Saudi Arabia  (0 casualty row(s))
+2026-03-12 20:28:55,630  INFO      INSERT [BEIRUT_HEZBOLLAH_STRIKES_20260312]  2026-03-12  conf=1.00  Beirut, Lebanon  (1 casualty row(s))
+2026-03-12 20:28:55,634  INFO        New location inserted: Unknown, Iran (LocationID=49)
+2026-03-12 20:28:55,639  INFO      INSERT [PARCHIN_AIRSTRIKE_20260312]  2026-03-12  conf=0.90  None, Iran  (0 casualty row(s))
+2026-03-12 20:28:55,645  INFO        New location inserted: Unknown, United States (LocationID=50)
+2026-03-12 20:28:55,648  INFO      INSERT [US_CYBERATTACK_20260311]  2026-03-11  conf=1.00  None, United States  (0 casualty row(s))
+2026-03-12 20:28:55,653  INFO        New location inserted: Unknown, International Waters (LocationID=51)
+2026-03-12 20:28:55,656  INFO      INSERT [HORMUZ_NAVAL_ATTACK_20260311]  2026-03-11  conf=1.00  None, International Waters  (0 casualty row(s))
+2026-03-12 20:28:55,661  INFO      INSERT [ISRAEL_MISSILE_BARRAGES_20260311]  2026-03-11  conf=0.90  None, Israel  (0 casualty row(s))
+2026-03-12 20:28:55,663  INFO      ────────────────────────────────────────────────────────────
+2026-03-12 20:28:55,663  INFO      Done.  Inserted: 6  |  Skipped/warned: 0  |  Casualty rows added: 1
+2026-03-13 12:48:29,330  INFO      === Iran Conflict DB Updater  2026-03-13 12:48 ===
+2026-03-13 12:48:29,331  INFO      Fetching news articles (last 2 day(s))…
+2026-03-13 12:48:29,706  INFO        → 17 article(s) retrieved
+2026-03-13 12:48:29,798  INFO      Sending articles to Gemini Flash for extraction…
+2026-03-13 12:48:29,803  INFO      AFC is enabled with max remote calls: 10.
+2026-03-13 12:48:45,923  INFO      HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent "HTTP/1.1 200 OK"
+2026-03-13 12:48:45,929  INFO        → Gemini extracted 2 candidate incident(s)
+2026-03-13 12:48:46,102  INFO      INSERT [US_SCHOOL_BOMBING_20260312]  2026-03-12  conf=0.70  None, Iran  (1 casualty row(s))
+2026-03-13 12:48:46,113  INFO      INSERT [IRAN_MISSILE_STRIKE_ISRAEL_20260312]  2026-03-12  conf=0.90  None, Israel  (1 casualty row(s))
+2026-03-13 12:48:46,114  INFO      ────────────────────────────────────────────────────────────
+2026-03-13 12:48:46,115  INFO      Done.  Inserted: 2  |  Skipped/warned: 0  |  Casualty rows added: 2
+2026-03-13 15:34:01,656  INFO      === Iran Conflict DB Updater  2026-03-13 15:34 ===
+2026-03-13 15:34:01,656  INFO      Fetching news articles (last 10 day(s))…
+2026-03-13 15:34:01,864  INFO        → 16 article(s) retrieved
+2026-03-13 15:34:01,945  INFO      Sending articles to Gemini Flash for extraction…
+2026-03-13 15:34:01,945  INFO      AFC is enabled with max remote calls: 10.
+2026-03-13 15:34:18,066  INFO      HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent "HTTP/1.1 200 OK"
+2026-03-13 15:34:18,070  INFO        → Gemini extracted 5 candidate incident(s)
+2026-03-13 15:34:18,562  INFO        New location inserted: Tehran, Iran (LocationID=35)
+2026-03-13 15:34:18,653  INFO      INSERT [TEHRAN_AIRSTRIKE_20260312A]  2026-03-12  conf=0.70  Tehran, Iran  (0 casualty row(s))
+2026-03-13 15:34:18,731  INFO        New location inserted: Dubai, UAE (LocationID=36)
+2026-03-13 15:34:18,801  INFO      INSERT [DUBAI_DRONESTRIKE_20260312]  2026-03-12  conf=0.90  Dubai, UAE  (0 casualty row(s))
+2026-03-13 15:34:18,884  INFO        New location inserted: Unknown, Unknown/Multiple (LocationID=37)
+2026-03-13 15:34:18,947  INFO      INSERT [SHIPPING_DRONESTRIKE_20260312]  2026-03-12  conf=0.80  None, Unknown/Multiple  (0 casualty row(s))
+2026-03-13 15:34:19,031  INFO        New location inserted: Kuwait City, Kuwait (LocationID=38)
+2026-03-13 15:34:19,100  INFO      INSERT [KUWAIT_AIRPORT_DRONESTRIKE_20260312]  2026-03-12  conf=0.90  Kuwait City, Kuwait  (0 casualty row(s))
+2026-03-13 15:34:19,173  INFO        New location inserted: Unknown, Iran (LocationID=39)
+2026-03-13 15:34:19,238  INFO      INSERT [IRAN_AIRSTRIKES_20260312B]  2026-03-12  conf=0.80  None, Iran  (0 casualty row(s))
+2026-03-13 15:34:19,287  INFO      ────────────────────────────────────────────────────────────
+2026-03-13 15:34:19,287  INFO      Done.  Inserted: 5  |  Skipped/warned: 0  |  Casualty rows added: 0
