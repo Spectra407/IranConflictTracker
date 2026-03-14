@@ -194,3 +194,12 @@ Raw output:
 2026-03-13 15:34:19,238  INFO      INSERT [IRAN_AIRSTRIKES_20260312B]  2026-03-12  conf=0.80  None, Iran  (0 casualty row(s))
 2026-03-13 15:34:19,287  INFO      ────────────────────────────────────────────────────────────
 2026-03-13 15:34:19,287  INFO      Done.  Inserted: 5  |  Skipped/warned: 0  |  Casualty rows added: 0
+2026-03-14 16:11:17,794  INFO      === DRY RUN MODE — no data will be written to the database ===
+2026-03-14 16:11:17,794  INFO      === Iran Conflict DB Updater  2026-03-14 16:11 ===
+2026-03-14 16:11:17,794  INFO      Fetching news articles (last 2 day(s))…
+2026-03-14 16:11:18,134  INFO        → 20 article(s) retrieved
+2026-03-14 16:11:18,224  INFO      Sending articles to Gemini Flash for extraction…
+2026-03-14 16:11:18,225  INFO      AFC is enabled with max remote calls: 10.
+2026-03-14 16:11:33,846  INFO      HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent "HTTP/1.1 200 OK"
+2026-03-14 16:11:33,849  INFO        → Gemini extracted 0 candidate incident(s)
+2026-03-14 16:11:33,850  INFO      No incidents to process.

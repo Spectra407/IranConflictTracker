@@ -58,8 +58,9 @@ CONN_STR = (
 # NewsAPI settings
 NEWSAPI_URL  = "https://newsapi.org/v2/everything"
 SEARCH_QUERY = (
-    "(Iran attack OR Iran strike OR Iran conflict OR Iran war OR Iran missile) "
-    "AND (casualties OR killed OR wounded OR dead OR strikes)"
+    "(Iran OR Israel OR Hezbollah) AND "
+    "(airstrike OR missile OR strike OR attack OR bombing OR killed OR "
+    "casualties OR wounded OR dead OR fatalities OR bombardment OR war)"
 )
 NEWS_LANGUAGE  = "en"
 NEWS_SORT_BY   = "publishedAt"
@@ -67,7 +68,7 @@ NEWS_PAGE_SIZE = 20   # max articles per run
 
 # Gemini settings
 GEMINI_MODEL   = "gemini-2.5-flash"
-MIN_CONFIDENCE = 0.7                  # skip extractions below this score, needs to be trustworthy enough
+MIN_CONFIDENCE = 0.55                  # skip extractions below this score, needs to be trustworthy enough
 
 # Logging — writes to both console and a log file
 logging.basicConfig(
@@ -120,10 +121,19 @@ def articles_to_text(articles: list[dict]) -> str:
     for i, a in enumerate(articles, 1):
         title       = a.get("title", "").strip()
         source      = a.get("source", {}).get("name", "Unknown")
-        published   = a.get("publishedAt", "")[:10]        # YYYY-MM-DD
+        published   = a.get("publishedAt", "")[:10]
         description = (a.get("description") or "").strip()
         content     = (a.get("content")     or "").strip()
-        body        = description if description else content
+        url         = a.get("url", "")
+
+        # Try to get full article text if description is thin
+        body = description if description else content
+        if len(body) < 300 and url:
+            full_text = enrich_article(url)
+            if len(full_text) > len(body):
+                body = full_text
+                log.info(f"  Enriched article {i} from URL ({len(body)} chars)")
+
         parts.append(
             f"[Article {i}] {published} | {source}\n"
             f"Title: {title}\n"
@@ -131,6 +141,21 @@ def articles_to_text(articles: list[dict]) -> str:
         )
     return "\n---\n".join(parts)
 
+def enrich_article(url: str) -> str:
+    """Try to fetch the full article text from the URL."""
+    try:
+        resp = requests.get(url, timeout=8, headers={
+            "User-Agent": "Mozilla/5.0"
+        })
+        if resp.status_code == 200:
+            # Extract text between paragraph tags crudely
+            import re
+            text = re.sub(r'<[^>]+>', ' ', resp.text)
+            text = re.sub(r'\s+', ' ', text).strip()
+            return text[:3000]  # cap at 3000 chars per article
+    except Exception:
+        pass
+    return ""
 
 # Gemini AI API integration:
 

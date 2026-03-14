@@ -6,28 +6,43 @@ import "./App.css";
 const API = process.env.REACT_APP_API_URL || "http://localhost:5000/api";
 
 export default function App() {
-  const [incidents, setIncidents]       = useState([]);
-  const [summary, setSummary]           = useState([]);
-  const [byCountry, setByCountry]       = useState([]);
-  const [byDay, setByDay]               = useState([]);
-  const [byAffiliation, setByAffiliation] = useState([]);
+  const [incidents, setIncidents]             = useState([]);
+  const [summary, setSummary]                 = useState([]);
+  const [byCountry, setByCountry]             = useState([]);
+  const [byDay, setByDay]                     = useState([]);
+  const [byAffiliation, setByAffiliation]     = useState([]);
   const [namedCasualties, setNamedCasualties] = useState([]);
-  const [loading, setLoading]           = useState(true);
-  const [error, setError]               = useState(null);
-  const [activeTab, setActiveTab]       = useState("incidents");
+  const [loading, setLoading]                 = useState(true);
+  const [error, setError]                     = useState(null);
+  const [activeTab, setActiveTab]             = useState("incidents");
 
   useEffect(() => {
-    const endpoints = [
-      fetch(`${API}/incidents`).then(r => r.json()),
-      fetch(`${API}/casualties/summary`).then(r => r.json()),
-      fetch(`${API}/casualties/by-country`).then(r => r.json()),
-      fetch(`${API}/incidents/by-day`).then(r => r.json()),
-      fetch(`${API}/casualties/by-affiliation`).then(r => r.json()),
-      fetch(`${API}/named-casualties`).then(r => r.json()),
-    ];
+    const fetchWithRetry = async (url, retries = 3, delay = 5000) => {
+      for (let i = 0; i < retries; i++) {
+        try {
+          const res = await fetch(url);
+          if (!res.ok) throw new Error(`HTTP ${res.status}`);
+          return await res.json();
+        } catch (err) {
+          if (i < retries - 1) {
+            await new Promise(r => setTimeout(r, delay));
+          } else {
+            throw err;
+          }
+        }
+      }
+    };
 
-    Promise.all(endpoints)
-      .then(([inc, sum, byC, byD, byA, named]) => {
+    const load = async () => {
+      try {
+        const [inc, sum, byC, byD, byA, named] = await Promise.all([
+          fetchWithRetry(`${API}/incidents`),
+          fetchWithRetry(`${API}/casualties/summary`),
+          fetchWithRetry(`${API}/casualties/by-country`),
+          fetchWithRetry(`${API}/incidents/by-day`),
+          fetchWithRetry(`${API}/casualties/by-affiliation`),
+          fetchWithRetry(`${API}/named-casualties`),
+        ]);
         setIncidents(inc);
         setSummary(sum);
         setByCountry(byC);
@@ -35,11 +50,13 @@ export default function App() {
         setByAffiliation(byA);
         setNamedCasualties(named);
         setLoading(false);
-      })
-      .catch(err => {
-        setError("Could not connect to the API. Make sure backend/app.py is running.");
+      } catch (err) {
+        setError("Could not connect to the API. The server may still be waking up — please refresh in 30 seconds.");
         setLoading(false);
-      });
+      }
+    };
+
+    load();
   }, []);
 
   const totalKilled  = summary.find(s => s.CasualtyType === "Killed")?.Total  ?? 0;
@@ -69,11 +86,11 @@ export default function App() {
       {/* ── KPI Bar ── */}
       <div className="kpi-bar">
         <div className="kpi-bar-inner">
-          <KPI label="Total Killed"  value={totalKilled.toLocaleString()}  color="var(--red)" />
+          <KPI label="Total Killed"     value={totalKilled.toLocaleString()}    color="var(--red)"   />
           <div className="kpi-divider" />
-          <KPI label="Total Wounded" value={totalWounded.toLocaleString()} color="var(--amber)" />
+          <KPI label="Total Wounded"    value={totalWounded.toLocaleString()}   color="var(--amber)" />
           <div className="kpi-divider" />
-          <KPI label="Total Missing" value={totalMissing.toLocaleString()} color="var(--blue)" />
+          <KPI label="Total Missing"    value={totalMissing.toLocaleString()}   color="var(--blue)"  />
           <div className="kpi-divider" />
           <KPI label="Incidents Logged" value={incidents.length.toLocaleString()} color="var(--slate)" />
         </div>
