@@ -11,7 +11,7 @@ import os
 
 from flask import Flask, jsonify
 from flask_cors import CORS
-import pyodbc
+import pymssql
 
 app = Flask(__name__)
 CORS(app)   # allows React (localhost:3000) to call this API (localhost:5000)
@@ -25,16 +25,13 @@ SQL_DATABASE = os.getenv("SQL_DATABASE")
 SQL_USERNAME = os.getenv("SQL_USERNAME")
 SQL_PASSWORD = os.getenv("SQL_PASSWORD")
 
-CONN_STR = (
-    f"DRIVER={{ODBC Driver 17 for SQL Server}};"
-    f"SERVER={SQL_SERVER};"
-    f"DATABASE={SQL_DATABASE};"
-    f"UID={SQL_USERNAME};"
-    f"PWD={SQL_PASSWORD};"
-)
-
 def get_db():
-    return pyodbc.connect(CONN_STR)
+    return pymssql.connect(
+        server=os.getenv("SQL_SERVER"),
+        user=os.getenv("SQL_USERNAME"),
+        password=os.getenv("SQL_PASSWORD"),
+        database=os.getenv("SQL_DATABASE")
+    )
 
 def rows_to_dicts(cursor):
     """Convert pyodbc rows to a list of dicts using column names."""
