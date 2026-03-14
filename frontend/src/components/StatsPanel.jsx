@@ -54,11 +54,11 @@ export default function StatsPanel({ byCountry, byDay, byAffiliation, namedCasua
         <section className="chart-section">
           <h2 className="chart-title">Casualties by Country</h2>
           <p className="chart-subtitle">Killed, wounded and missing per nationality (top 12)</p>
-          <ResponsiveContainer width="100%" height={300}>
+          <ResponsiveContainer width="100%" height={500}>
             <BarChart data={countryData} layout="vertical" margin={{ left: 16, right: 24 }}>
               <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" horizontal={false} />
               <XAxis type="number" tick={{ fontSize: 11, fill: "#6b7280" }} />
-              <YAxis dataKey="Country" type="category" tick={{ fontSize: 11, fill: "#374151" }} width={160} />
+              <YAxis dataKey="Country" type="category" tick={{ fontSize: 11, fill: "#374151" }} width={160} interval={0} />
               <Tooltip
                 contentStyle={{ fontSize: 12, borderRadius: 4, border: "1px solid #e5e7eb" }}
               />
