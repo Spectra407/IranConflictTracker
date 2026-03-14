@@ -1,0 +1,21 @@
+services:
+  - type: web
+    name: iran-conflict-api
+    runtime: python
+    rootDir: backend
+    buildCommand: |
+      curl https://packages.microsoft.com/keys/microsoft.asc | apt-key add -
+      curl https://packages.microsoft.com/config/ubuntu/22.04/prod.list > /etc/apt/sources.list.d/mssql-release.list
+      apt-get update
+      ACCEPT_EULA=Y apt-get install -y msodbcsql17
+      pip install -r requirements.txt
+    startCommand: python app.py
+    envVars:
+      - key: SQL_SERVER
+        sync: false
+      - key: SQL_DATABASE
+        sync: false
+      - key: SQL_USERNAME
+        sync: false
+      - key: SQL_PASSWORD
+        sync: false
