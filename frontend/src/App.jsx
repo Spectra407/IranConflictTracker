@@ -3,7 +3,7 @@ import IncidentFeed from "./components/IncidentFeed";
 import StatsPanel from "./components/StatsPanel";
 import "./App.css";
 
-const API = "http://localhost:5000/api";
+const API = process.env.REACT_APP_API_URL || "http://localhost:5000/api";
 
 export default function App() {
   const [incidents, setIncidents]       = useState([]);
