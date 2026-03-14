@@ -58,7 +58,7 @@ export default function StatsPanel({ byCountry, byDay, byAffiliation, namedCasua
             <BarChart data={countryData} layout="vertical" margin={{ left: 16, right: 24 }}>
               <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" horizontal={false} />
               <XAxis type="number" tick={{ fontSize: 11, fill: "#6b7280" }} />
-              <YAxis dataKey="Country" type="category" tick={{ fontSize: 11, fill: "#374151" }} width={120} />
+              <YAxis dataKey="Country" type="category" tick={{ fontSize: 11, fill: "#374151" }} width={160} />
               <Tooltip
                 contentStyle={{ fontSize: 12, borderRadius: 4, border: "1px solid #e5e7eb" }}
               />
