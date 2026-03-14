@@ -52,7 +52,7 @@ export default function App() {
       <header className="header">
         <div className="header-inner">
           <div className="header-left">
-            <div className="header-badge">UNCLASSIFIED // FOR PUBLIC RELEASE</div>
+            <div className="header-badge">By Kenny Ly using data from NewsAPI</div>
             <h1 className="header-title">Iran Conflict Tracker</h1>
             <p className="header-subtitle">
               Casualty &amp; Incident Database — Iran–Israel–US Conflict, February 2026–Present
