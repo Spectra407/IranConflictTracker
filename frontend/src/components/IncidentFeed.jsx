@@ -9,13 +9,6 @@ const TYPE_COLORS = {
   "Other":          "#374151",
 };
 
-const VERIFICATION_COLORS = {
-  "Verified":   "#166534",
-  "Reported":   "#92400e",
-  "Unverified": "#374151",
-  "Disputed":   "#7f1d1d",
-};
-
 export default function IncidentFeed({ incidents }) {
   const [search, setSearch]         = useState("");
   const [filterType, setFilterType] = useState("All");
